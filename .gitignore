@@ -10,5 +10,7 @@ __pycache__
 *.mp3
 *.csv
 *.zip
+*.png
+*.jpeg
 
 # Temp dirs created by the scripts
