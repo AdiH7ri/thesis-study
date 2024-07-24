@@ -3,7 +3,7 @@ import numpy as np
 import noisereduce as nr
 import soundfile as sf
 from pathlib import Path
-from .audio_utils import DIR_PATH, AUD_FILE_PATH
+from audio_utils import DIR_PATH, AUD_FILE_PATH
 
 def z_standardization(Arr : np.ndarray):
     return (Arr - np.mean(Arr)/np.std(Arr))
