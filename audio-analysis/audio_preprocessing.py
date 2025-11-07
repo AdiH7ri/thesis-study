@@ -22,22 +22,20 @@ seconds_to_crop_from_the_beginning = 3.5
 
 thresh = 1.75 
 
-# for i in range(0,len(audio_file_names),2):
-#     x1, sr = librosa.load(Path.joinpath(AUD_FILE_PATH, audio_file_names[i] + '.mp3'), sr=None)
-#     x2, _ = librosa.load(Path.joinpath(AUD_FILE_PATH, audio_file_names[i+1] + '.mp3'), sr=None) # As the sample rate is same for all recordings
+for i in range(0,len(audio_file_names),2):
+    x1, sr = librosa.load(Path.joinpath(AUD_FILE_PATH, audio_file_names[i] + '.mp3'), sr=None)
+    x2, _ = librosa.load(Path.joinpath(AUD_FILE_PATH, audio_file_names[i+1] + '.mp3'), sr=None) # As the sample rate is same for all recordings
 
-#     x1_standardized = z_standardization(x1[int( seconds_to_crop_from_the_beginning * sr ):])
-#     x2_standardized = z_standardization(x2[int( seconds_to_crop_from_the_beginning * sr ):])
+    x1_standardized = z_standardization(x1[int( seconds_to_crop_from_the_beginning * sr ):])
+    x2_standardized = z_standardization(x2[int( seconds_to_crop_from_the_beginning * sr ):])
 
-#     x1_processed = nr.reduce_noise(y = x1_standardized, sr=sr, y_noise = x2_standardized, n_std_thresh_stationary= thresh,stationary=True)
-#     x2_processed = nr.reduce_noise(y = x2_standardized, sr=sr, y_noise = x1_standardized, n_std_thresh_stationary= thresh,stationary=True)
+    x1_processed = nr.reduce_noise(y = x1_standardized, sr=sr, y_noise = x2_standardized, n_std_thresh_stationary= thresh,stationary=True)
+    x2_processed = nr.reduce_noise(y = x2_standardized, sr=sr, y_noise = x1_standardized, n_std_thresh_stationary= thresh,stationary=True)
 
-#     savepath_1 = Path.joinpath(DIR_PATH, 'processed-data', audio_file_names[i] + '-processed.mp3')
-#     savepath_2 = Path.joinpath(DIR_PATH, 'processed-data', audio_file_names[i+1] + '-processed.mp3')
+    savepath_1 = Path.joinpath(DIR_PATH, 'processed-data', audio_file_names[i] + '-processed.mp3')
+    savepath_2 = Path.joinpath(DIR_PATH, 'processed-data', audio_file_names[i+1] + '-processed.mp3')
 
-#     sf.write(savepath_1, x1_processed, sr)
-#     sf.write(savepath_2, x2_processed, sr)
+    sf.write(savepath_1, x1_processed, sr)
+    sf.write(savepath_2, x2_processed, sr)
 
-#     print(f'Processed and saved {audio_file_names[i]},mp3, { audio_file_names[i+1]}.mp3 !')
-
-print('works')
+    print(f'Processed and saved {audio_file_names[i]},mp3, { audio_file_names[i+1]}.mp3 !')
