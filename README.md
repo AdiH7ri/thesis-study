@@ -21,7 +21,7 @@ The study aims to bridge affective computing and social signal processing to bet
 
 ---
 
-## ⚙️ Methodology
+## Methodology
 
 ### 1. Audio-based Pipeline
 - **Pre-processing:** trimming of non-conversational segments, noise reduction via spectral subtraction using the partner’s signal.  
